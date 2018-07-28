@@ -1,4 +1,5 @@
 from random import random
+import json
 
 class InputOutputError(Exception):
 	pass
@@ -15,12 +16,13 @@ out={}
 values={}
 
 def config(path):
-    with open(config_name) as config:
+    global config
+    with open(path) as config:
     	config = json.load(config)
-	if not config[TEST]:
-		global RPi
-		global GPIO
-		import RPi.GPIO as GPIO
+    if not config[TEST]:
+        global RPi
+        global GPIO
+        import RPi.GPIO as GPIO
 
 def setup(channel,in_out):
 	if config[TEST]:
@@ -28,7 +30,7 @@ def setup(channel,in_out):
 	else:
 		GPIO.setup(channel,in_out)
 
-def check_is_input(channel,in_out):
+def check_in_out(channel,in_out):
 	try:
 		if not pins[channel]==in_out:
 			raise InputOutputError("Wrong configuration for channel {}! You're treating an input channel as output or vice versa.")
