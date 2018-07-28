@@ -6,7 +6,7 @@ Library for mocking Rpi.GPIO transparently.
 <h2>History</h2>
 
 I wanted to test some ideas I had in mind for my Raspberry Pi, but I didn't have it with me. 
-So I made this really tiny library which acts as a wrapper for Rpi.GPIO.
+So I made this really tiny library which acts as a wrapper for RPi.GPIO.
 
 <h2>Usage Example</h2>
 
@@ -14,11 +14,11 @@ First create a config file with this content:
 
 ```
 {
-  'test':True
+  'test':true
 }
 ```
 
-This enables the mocking. If you're executing your script on a anctual raspberry you may want to set `'test'` to `False`.
+This enables the mocking. If you're executing your script on a anctual raspberry you may want to set `'test'` to `false`.
 
 Then you are ready to interact with the library exactly how you'd do with Rpi.GPIO:
 ```
