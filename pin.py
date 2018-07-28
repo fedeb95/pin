@@ -1,5 +1,5 @@
 from random import random
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
 class InputOutputError(Exception):
 	pass
@@ -9,9 +9,14 @@ TEST='test'
 config[TEST]=False
 IN=GPIO.IN
 OUT=GPIO.OUT
+HIGH=GPIO.HIGH
+LOW=GPIO.LOW
 pins={}
 out={}
 values={}
+
+def config(path):
+	pass
 
 def setup(channel,in_out):
 	if config[TEST]:
