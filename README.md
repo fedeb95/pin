@@ -61,7 +61,11 @@ https://sourceforge.net/p/raspberry-gpio-python/wiki/install/
 In test mode this isn't required since RPi.GPIO isn't imported.
 
 <h2>Installation</h2>
-Clone this repository, then run `python setup.py install`. You may need to use sudo.
+Clone this repository, then run
+
+```
+python setup.py install
+```
 
 <h2>What's implemented of RPi.GPIO</h2>
 
