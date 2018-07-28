@@ -20,20 +20,19 @@ First create a config file with this content:
 
 This enables the mocking. If you're executing your script on a anctual raspberry you may want to set `'test'` to `False`.
 
-This file isn't mandatory, you can simply do `pin.config[pin.TEST]=True` by code. By default `'test'` is set to `False`.
-
 Then you are ready to interact with the library exactly how you'd do with Rpi.GPIO:
 ```
-pin.config('/path/to/config/file') # only if you have a config file
+pin.config('/path/to/config/file') 
 pin.setmode(pin.BCM)
 pin.setup(4,pin.OUT)
 pin.output(4,pin.LOW)
 ```
 
+The file and the call to `config()` are mandatory, since apparently `RPi.GPIO` can't be imported on a system that's not a Raspberry Pi. So the method also imports the module if the `'test'` value is `False`.
+
 What if you want your pin to read an input?
 
 ```
-pin.setmode(pin.BCM)
 pin.setup(4,pin.IN)
 value = pin.input(4)
 ```

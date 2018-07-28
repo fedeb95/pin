@@ -1,5 +1,4 @@
 from random import random
-import RPi.GPIO as GPIO
 
 class InputOutputError(Exception):
 	pass
@@ -7,16 +6,21 @@ class InputOutputError(Exception):
 config={}
 TEST='test'
 config[TEST]=False
-IN=GPIO.IN
-OUT=GPIO.OUT
-HIGH=GPIO.HIGH
-LOW=GPIO.LOW
+IN=1
+OUT=0
+HIGH=1
+LOW=0
 pins={}
 out={}
 values={}
 
 def config(path):
-	pass
+    with open(config_name) as config:
+    	config = json.load(config)
+	if not config[TEST]:
+		global RPi
+		global GPIO
+		import RPi.GPIO as GPIO
 
 def setup(channel,in_out):
 	if config[TEST]:
