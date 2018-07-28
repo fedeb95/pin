@@ -60,6 +60,9 @@ https://sourceforge.net/p/raspberry-gpio-python/wiki/install/
 
 In test mode this isn't required since RPi.GPIO isn't imported.
 
+<h2>Installation</h2>
+Clone this repository, then run `python setup.py install`. You may need to use sudo.
+
 <h2>What's implemented of RPi.GPIO</h2>
 
 * `setup(channel,in_or_out,initial=pin.HIGH)` same as GPIO, works also with a list of channels. Use `pin.IN` or `pin.OUT`, as well as `pin.HIGH` or `pin.LOW`
