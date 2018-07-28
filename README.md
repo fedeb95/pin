@@ -14,7 +14,7 @@ First create a config file with this content:
 
 ```
 {
-  'test':true
+  "test":true
 }
 ```
 
