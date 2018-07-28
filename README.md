@@ -51,3 +51,18 @@ value = pin.input(4)
 You need to install RPi.GPIO for this to work
 https://sourceforge.net/p/raspberry-gpio-python/wiki/install/
 
+In test mode this isn't required since RPi.GPIO isn't imported.
+
+<h2>What's implemented of RPi.GPIO</h2>
+
+* `setup(channel,in_or_out,initial=pin.HIGH)` same as GPIO, works also with a list of channels. Use pin.IN or pin.OUT
+* `setmode(mode)` same as GPIO, use `pin.BCM` or `pin.BOARD`. In test mode this won't do anything.
+* `input(channel)` same as GPIO, if `pin.set_value(channel,value)` isn't called before then a random number in range [0,1] is returned. Otherwise what you set with `set_value()` for that channel
+* `output(channel,value)` same as GPIO, writes `value` to pin `channel`. In test mode you can retrieve what was set with `pin.get_output(channel)`. As `setup()` works with a list of channels
+* `cleanup(channel)` same as GPIO, works also with a list of channels
+
+<h2>Additional functions</h2>
+This functions are only useful in test mode. See `test/` for better examples.
+
+* `set_value(channel,value)` every time `input(channel)` is called, `value` is returned instead of a random number
+* `get_output(channel)` returns whatever `output(channel,value)` wrote to `channel`
