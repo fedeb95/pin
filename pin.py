@@ -1,17 +1,23 @@
 from random import random
+import Rpi.GPIO as GPIO
 
 class InputOutputError(Exception):
 	pass
 
 config={}
+TEST='test'
+config[TEST]=False
+IN=GPIO.IN
+OUT=GPIO.OUT
 pins={}
 out={}
 values={}
-IN=0
-OUT=1
 
 def setup(channel,in_out):
-	pins[channel]=in_out
+	if config[TEST]:
+		pins[channel]=in_out
+	else:
+		GPIO.setup(channel,in_out)
 
 def check_is_input(channel,in_out):
 	try:
@@ -21,16 +27,22 @@ def check_is_input(channel,in_out):
 		raise InputOutputError("Wrong configuration for channel {}! setup() not called for this channel before calling input() or output().")
 
 def input(channel):
-	check_in_out(channel,IN)
-	try:
-		values[channel]
-	except KeyError:
-		return random()
-	return values[channel]
+	if config[TEST]:
+		check_in_out(channel,IN)
+		try:
+			values[channel]
+		except KeyError:
+			return random()
+		return values[channel]
+	else:
+		GPIO.input(channel)
 
 def output(channel,value):
-	check_in_out(channel,OUT)
-	out[channel]=value
+	if config[TEST]:
+		check_in_out(channel,OUT)
+		out[channel]=value
+	else:
+		GPIO.output(channel,value)
 
 def set_value(channel,value):
 	values[channel]=value
@@ -38,5 +50,8 @@ def set_value(channel,value):
 def get_output(channel):
 	return out[channel]
 	
-	
+def cleanup(channel):
+	del pins[channel]
+	del values[channel]
+	del out[channel]
 
