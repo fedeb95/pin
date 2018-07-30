@@ -1,12 +1,12 @@
 # Pin
-Library for mocking Rpi.GPIO transparently.
+Library for mocking Rpi.GPIO for Raspberry Pi transparently, allowing development also on other devices.
 
-<h1>Attention: this does not yet work as intended. It will in a few days, I can't make private repositories.</h1>
+<h1>Attention: this works only in test mode. I will tets in a few days, I can't make private repositories and don't have a Raspberry Pi with me.</h1>
 
 <h2>History</h2>
 
 I wanted to test some ideas I had in mind for my Raspberry Pi, but I didn't have it with me. 
-So I made this really tiny library which acts as a wrapper for RPi.GPIO.
+So I made this really tiny library which acts as a wrapper for RPi.GPIO. You can write your code on your laptop, test it and then deploy it on your Raspberry Pi by only changing a value in a JSON.
 
 <h2>Usage Example</h2>
 
