@@ -18,6 +18,7 @@ out={}
 values={}
 
 def config(path):
+    global conf
     with open(path) as c:
         conf = json.load(c)
     if not conf[TEST]:
