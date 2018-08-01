@@ -46,7 +46,7 @@ def _setup_one(channel,in_out,initial):
         if in_out == IN:
             GPIO.setup(channel,GPIO.IN,initial)
         else:
-            GPIO.setup(chanel,GPIO.OUT,initial)
+            GPIO.setup(channel,GPIO.OUT,initial)
 
 def check_in_out(channel,in_out):
     try:
