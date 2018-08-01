@@ -73,7 +73,7 @@ def input(channel):
             return random()
         return values[channel]
     else:
-        GPIO.input(channel)
+        return GPIO.input(channel)
 
 def output(channel,value):
     if type(channel) is list:
