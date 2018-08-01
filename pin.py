@@ -44,7 +44,7 @@ def _setup_one(channel,in_out,initial):
         else:
             initial = GPIO.LOW
         if in_out == IN:
-            GPIO.setup(channel,GPIO.IN,initial=initial)
+            GPIO.setup(channel,GPIO.IN) # initial not a valid parameter for input, GPIO error
         else:
             GPIO.setup(channel,GPIO.OUT,initial=initial)
 
