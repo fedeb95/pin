@@ -1,7 +1,7 @@
 # Pin
 Library for mocking Rpi.GPIO for Raspberry Pi transparently, allowing development also on other devices.
 
-<h1>Attention: this works only in test mode. I will tets in a few days, I can't make private repositories and don't have a Raspberry Pi with me.</h1>
+<h1>Attention: this should work in production, but I haven't tested it properly. I'm using it for a project and works for my needs. You cal help me test this library by reporting issues or feature requests.</h1>
 
 <h2>History</h2>
 
