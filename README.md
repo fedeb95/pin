@@ -1,7 +1,6 @@
 # Pin 
 [![Build Status](https://travis-ci.org/fedeb95/pin.png?branch=master)](https://travis-ci.org/fedeb95/pin)
-.. image:: https://codecov.io/gh/fedeb95/pin/branch/master/graph/badge.svg
-  :target: https://codecov.io/fedeb95/pin/
+[![Coverage](https://codecov.io/gh/fedeb95/pin/branch/master/graph/badge.svg)](https://codecov.io/fedeb95/pin/)
   
 Library for mocking Rpi.GPIO for Raspberry Pi transparently, allowing development also on other devices.
 
