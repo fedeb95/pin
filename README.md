@@ -4,12 +4,12 @@
   
 RPi.GPIO wrapper. Write code once, test it anywhere, run on Raspberry Pi
 
-<h2>Why I made this (and why I use this)<h2>
-
+<h2>Why<h2>
+  
 I wanted to test some ideas I had in mind for my Raspberry Pi, but I didn't have it with me. 
 So I made this really tiny library which acts as a wrapper for RPi.GPIO. You can write your code on your laptop, test it and then deploy it on your Raspberry Pi by only changing a value in a configuration file, only when it's really working.
 
-<h2>How to use this</h2>
+<h2>How</h2>
 
 First create a config file with this content:
 
