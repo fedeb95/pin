@@ -7,5 +7,5 @@ before_install:
     - pip install coverage
     - pip install codecov
 after_success:
-    - coverage run --branch test/test_*.py
+    - coverage run --branch pin.py
     - codecov 
