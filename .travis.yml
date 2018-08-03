@@ -4,6 +4,7 @@ python:
 script:
     - python -m unittest discover
 before_install:
-  - pip install codecov
+    - pip install coverage
+    - pip install codecov
 after_success:
-  - codecov 
+    - codecov 
