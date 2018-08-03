@@ -2,10 +2,9 @@ language: python
 python:
     - "3.6"
 script:
-    - python -m unittest discover
+    - coverage run --branch -m unittest discover
 before_install:
     - pip install coverage
     - pip install codecov
 after_success:
-    - coverage run --branch pin.py
     - codecov 
