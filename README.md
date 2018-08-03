@@ -2,16 +2,14 @@
 [![Build Status](https://travis-ci.org/fedeb95/pin.png?branch=master)](https://travis-ci.org/fedeb95/pin)
 [![Coverage](https://codecov.io/gh/fedeb95/pin/branch/master/graph/badge.svg)](https://codecov.io/fedeb95/pin/)
   
-Library for mocking Rpi.GPIO for Raspberry Pi transparently, allowing development also on other devices.
+RPi.GPIO wrapper. Write code once, test it anywhere, run on Raspberry Pi
 
-<h1>Attention: this should work in production, but I haven't tested it properly. I'm using it for a project and works for my needs. You cal help me test this library by reporting issues or feature requests.</h1>
-
-<h2>History</h2>
+<h2>Why I made this (and why I use this)<h2>
 
 I wanted to test some ideas I had in mind for my Raspberry Pi, but I didn't have it with me. 
-So I made this really tiny library which acts as a wrapper for RPi.GPIO. You can write your code on your laptop, test it and then deploy it on your Raspberry Pi by only changing a value in a JSON.
+So I made this really tiny library which acts as a wrapper for RPi.GPIO. You can write your code on your laptop, test it and then deploy it on your Raspberry Pi by only changing a value in a configuration file, only when it's really working.
 
-<h2>Usage Example</h2>
+<h2>How to use this</h2>
 
 First create a config file with this content:
 
@@ -21,7 +19,7 @@ First create a config file with this content:
 }
 ```
 
-This enables the mocking. If you're executing your script on a anctual raspberry you may want to set `'test'` to `false`.
+This enables the mocking. If you're executing your script on a anctual raspberry you may want to set `'test'` to `false`. This transforms every call to an actual GPIO call.
 
 Now load your configuration file:
 
@@ -36,9 +34,9 @@ pin.setup(4,pin.OUT)
 pin.output(4,pin.LOW)
 ```
 
-The file and the call to `config()` are mandatory, since apparently `RPi.GPIO` can't be imported on a system that's not a Raspberry Pi. So the method also imports the module if the `'test'` value is `False`.
+The file and the call to `config()` are mandatory, since apparently `RPi.GPIO` can't be imported on a system that's not a Raspberry Pi. So the method also imports the module if the `"test"` value is `false`.
 
-You may see a `pin.conf` dictionary and be tempted to set `'test'` there without an external file, and without calling `config()`. This way RPi.GPIO isn't imported and your code won't work on an actual Raspberry Pi. Use at your own risk.
+You may see a `pin.conf` dictionary and be tempted to set `"test"` there without an external file, and without calling `config()`. This way RPi.GPIO isn't imported and your code won't work on an actual Raspberry Pi. Use at your own risk.
 
 What if you want your pin to read an input?
 
@@ -56,6 +54,8 @@ pin.set_value(4,0.5)
 # your script
 value = pin.input(4)
 ```
+ 
+This way other applications can be built. For instance a GUI that simulates a Raspberry with devices attached.
 
 <h2>Dependencies</h2>
 You need to install RPi.GPIO for this to work
@@ -63,7 +63,7 @@ https://sourceforge.net/p/raspberry-gpio-python/wiki/install/
 
 In test mode this isn't required since RPi.GPIO isn't imported.
 
-Tested under Python 3.6.6 
+Tested under Python 3.6
 
 <h2>Installation</h2>
 Clone this repository, then run
@@ -87,4 +87,6 @@ This functions are only useful in test mode. See `test` folder for better exampl
 * `get_output(channel)` returns whatever `output(channel,value)` wrote to `channel`
 
 <h2>The future</h2>
-People actually serious with their Raspberries, please let me know of improvement or whatever you may find useful. I use mine as an hobby, and I'm not an expert of IoT. Any contribution is welcomed basically
+People actually serious with their Raspberries, please let me know of improvement or whatever you may find useful. I use mine as an hobby, and I'm not an expert of IoT. Any contribution is welcomed basically.
+
+Since I haven't found a way to properly and automatically test this library behaviour on a Rapsberry, either tell me how or report issues about the actual RPi.GPIO calls. What this library is trying to solve is exactly this apparent difficulty of testing Raspberry code properly.
