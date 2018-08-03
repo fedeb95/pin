@@ -1,4 +1,6 @@
-# Pin
+# Pin 
+[![Build Status](https://travis-ci.org/{ORG-or-USERNAME}/{REPO-NAME}.png?branch=master)](https://travis-ci.org/{ORG-or-USERNAME}/{REPO-NAME})
+
 Library for mocking Rpi.GPIO for Raspberry Pi transparently, allowing development also on other devices.
 
 <h1>Attention: this should work in production, but I haven't tested it properly. I'm using it for a project and works for my needs. You cal help me test this library by reporting issues or feature requests.</h1>
