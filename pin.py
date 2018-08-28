@@ -95,17 +95,28 @@ def set_value(channel,value):
 def get_output(channel):
     return out[channel]
     
-def cleanup(channel):
-    if type(channel) is list or type(channel) is tuple:
-        for el in channel:
-            _cleanup_one(el)
+def cleanup(channel=None):
+    global pins,out,values
+    if channel==None:
+        if conf[TEST]: 
+            pins,out,values={},{},{}
+        else:
+            GPIO.cleanup()
+    else:
+        if type(channel) is list or type(channel) is tuple:
+            for el in channel:
+                _cleanup_one(el)
+        else:
+            _cleanup_one(channel)
 
 def _cleanup_one(channel):
+    global pins,out,values
     if conf[TEST]:
-        if pins[channel]==IN:
+        if channel in values.keys() and pins[channel]==IN:
             del values[channel]
-        else:
+        elif channel in out.keys():
             del out[channel]
-        del pins[channel]
+        if channel in pins.keys():
+            del pins[channel]
     else:
         GPIO.cleanup(channel)

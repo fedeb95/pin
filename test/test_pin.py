@@ -40,4 +40,9 @@ class TestPin(unittest.TestCase):
         value5 = pin.get_output(5)
         self.assertEqual(pin.HIGH,value4)
         self.assertEqual(pin.HIGH,value5)
-        pin.cleanup([4,5])
+        pin.cleanup(5)
+
+    def test_cleanup(self):
+        pin.setup([1,2],pin.OUT)
+        pin.cleanup()
+        self.assertRaises(pin.InputOutputError, pin.output, [1,2], pin.HIGH)
