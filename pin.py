@@ -1,21 +1,26 @@
 from random import random
 import json
 
+from pwm import PWMWorker
+
 class InputOutputError(Exception):
     pass
 
 conf={}
 TEST='test'
 conf[TEST]=False
+
 IN=1
 OUT=0
 HIGH=1
 LOW=0
 BCM=0
 BOARD=1
+
 pins={}
 out={}
 values={}
+pwm_workers={}
 
 def config(path):
     global conf
@@ -26,7 +31,6 @@ def config(path):
         global GPIO
         import RPi.GPIO as GPIO
 
-#TODO check if initial is discarded for input or error is raised
 def setup(channel,in_out,initial=HIGH):
     global conf
     if type(channel) is list:
@@ -88,6 +92,20 @@ def _output_one(channel,value):
         out[channel]=value
     else:
         GPIO.output(channel,value)
+
+def PWM(channel,dc):
+    if check_in_out(channel,OUT):
+        worker=PWMWorker(channel,dc)
+        pwm_workers[channel]=(worker)
+        return worker
+    else:
+        return GPIO.PWM(channel,dc)
+
+def get_pwm(channel):
+    try:
+        return pwm_workers[channel]
+    except KeyError:
+        return None
 
 def set_value(channel,value):
     values[channel]=value
